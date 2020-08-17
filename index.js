@@ -1,5 +1,12 @@
+// Thursday Assignment - JS Calculator
+// numbers (0-9)
+// operators (+,-,*,/)
+// decimal
+// equals (=)
+// clear (AC, CE)
 
-// Calculate function with 3 parameters to compute the arithmetic operation
+
+// Basic Function - Calculate function with 3 parameters to compute the arithmetic operation
 const calculate = (n1, operator, n2) => {
   //Converting String to float
   const firstNum = parseFloat(n1);
@@ -32,7 +39,7 @@ const getKeyType = key => {
   return action
 }
 
-//Assigning 'state' object with corresponding string values for firstValue, operator, modValue and previousKeyType.
+// Giving 'state' object with string values for firstValue, operator, modValue and previousKeyType.
 const createResultString = (key, displayedNum, state) => {
   const keyContent = key.textContent
   const keyType = getKeyType(key)
@@ -109,7 +116,7 @@ const updateCalculatorState = (key, calculator, calculatedValue, displayedNum) =
 
   //Saving the secondValue in temporary modValue if '=' is pressed after calculation or assign the displayedNum to modValue
   if (keyType === 'calculate') {
-    calculator.dataset.modValue = firstValue && previousKeyType === 'calculate'
+    calculator.dataset.modValue = firstValue && previousKeyType === 'calculate' // ternary operator which gives results (if true:if false)
       ? modValue
       : displayedNum
   }
@@ -132,7 +139,6 @@ const updateVisualState = (key, calculator) => {
 
   //Adding 'is-depressed' classList when user clicks the operator key.
   if (keyType === 'operator') key.classList.add('is-depressed')
-
   if (keyType === 'clear' && key.textContent !== 'AC') key.textContent = 'AC'
 
   //Changing the 'AC' button to 'CE' when the uer has clicked a number key and operator key.
